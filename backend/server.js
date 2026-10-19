@@ -55,17 +55,18 @@
 import express from 'express';
 import cors  from 'cors';
 import dotenv from 'dotenv';
+import { fileURLToPath } from 'node:url';
 
 // Load env vars FIRST before any other imports that may use them
-dotenv.config();
+dotenv.config({ path: fileURLToPath(new URL('./.env', import.meta.url)) });
 
-import connectdb from './config/db.js';
+import connectdb from './db.js';
 import http, { createServer } from "http";
 import url from 'url';
-import getTime from  "./date.js";
+import { getDateTime } from "./date.js";
 import authRoute from "./routes/authRoutes.js";
 
-getTime();
+console.log(getDateTime());
 
 
 
