@@ -1,54 +1,19 @@
-// import mongoose, { model } from "mongoose";
-
-// const userSchema = mongoose.Schema({
-//     name: {
-//         type: String,
-//         required: true,
-//     },
-//     email: {
-//         type: String,
-//         required: true,
-//         unique: true
-//     },
-//     password: {
-//         type: String,
-//         required: true,
-//     }
-// },{
-//     timestamps: true
-// });
-
-// export default mongoose.model("User", userSchema)
-
-
-import mongoose, { model } from "mongoose";
-
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
+    name: { type: String, required: true, trim: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    password: { type: String, required: true, minlength: 6, select: false }, // hash with bcrypt
     role: {
       type: String,
-      enum: ["admin", "teacher", "student"],
-      default: "student",
+      enum: ["admin", "faculty", "student", "accountant", "librarian"],
+      required: true,
     },
+    phone: String,
+    avatar: String,
+    isActive: { type: Boolean, default: true },
+    lastLogin: Date,
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
-
-const User = model("User", userSchema);
-
-export default User;

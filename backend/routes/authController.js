@@ -3,9 +3,8 @@ import bcrypt from 'bcryptjs';
 
 export const signupUser = async (req, res) => {
     try {
-
-
         const name = req.body.name;
+        
         const email = req.body.email;
         const password = req.body.password;
         // email finder
@@ -15,9 +14,7 @@ export const signupUser = async (req, res) => {
             console.log({ message: 'User already exists' });
             return res.status(400).json({ message: 'User already exists' });
         }
-        else {
-            console.log({ message: 'User does not exist' });
-        }
+        
         // hashpassowrd
         const hashedPassword = await bcrypt.hash(password, 10);
 

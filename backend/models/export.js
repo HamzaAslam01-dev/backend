@@ -1,0 +1,18 @@
+module.exports = {
+  User: mongoose.model("User", userSchema),
+  Department: mongoose.model("Department", departmentSchema),
+  Program: mongoose.model("Program", programSchema),
+  Course: mongoose.model("Course", courseSchema),
+  Semester: mongoose.model("Semester", semesterSchema),
+  Faculty: mongoose.model("Faculty", facultySchema),
+  Student: mongoose.model("Student", studentSchema),
+  Attendance: mongoose.model("Attendance", attendanceSchema),
+  Timetable: mongoose.model("Timetable", timetableSchema),
+  Exam: mongoose.model("Exam", examSchema),
+  Result: mongoose.model("Result", resultSchema),
+  Fee: mongoose.model("Fee", feeSchema),
+  Book: mongoose.model("Book", bookSchema),
+  BookIssue: mongoose.model("BookIssue", bookIssueSchema),
+  Notice: mongoose.model("Notice", noticeSchema),
+  Leave: mongoose.model("Leave", leaveSchema),
+};
